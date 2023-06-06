@@ -1,0 +1,33 @@
+👉Brute Force 
+T.C O(2N) S.C O(N)
+
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        vector<int>ans;
+        ListNode* temp=head;
+
+        while(temp!=NULL){
+            ans.push_back(temp->val);
+            temp=temp->next;
+        }
+  
+        for(int i=0;i<ans.size();i=i+k){
+            if((i+k)<=ans.size()){
+                reverse(ans.begin()+i,ans.begin()+(i+k));
+            }
+        }
+        for(int i=0;i<ans.size();i++){
+            cout<<ans[i]<<" ";
+        }
+        ListNode* dummy=head;
+        int i=0;
+        while(head!=NULL){
+            head->val=ans[i];
+            i++;
+            head=head->next;
+        }
+
+        return dummy;
+    }
+};
